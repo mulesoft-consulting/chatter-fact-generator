@@ -3,16 +3,16 @@
     <global-element type="http://www.mulesoft.org/schema/mule/sfdc/config" name="Salesforce" entity-id="Salesforce#1">
         <properties>
             <property name="proxyUsername"/>
-            <property value="${salesforce_securityToken}" name="securityToken"/>
+            <property name="securityToken"/>
             <property name="proxyHost"/>
             <property name="allowFieldTruncationSupport"/>
             <property name="auxiliary;metauseMetaData"/>
             <property name="assignmentRuleId"/>
             <property name="proxyPort"/>
-            <property value="${salesforce_password}" name="password"/>
+            <property name="password"/>
             <property name="clientId"/>
             <property name="url"/>
-            <property value="${salesforce_username}" name="username"/>
+            <property name="username"/>
             <property name="useDefaultRule"/>
             <property value="Salesforce" name="name"/>
             <property name="timeObjectStore-ref"/>
@@ -48,15 +48,15 @@
     </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/cloudhub/config" name="Cloudhub" entity-id="Cloudhub#1">
         <properties>
-            <property name="username"/>
+            <property value="${ch.username}" name="username"/>
             <property value="Cloudhub" name="name"/>
             <property name="maxWaitTime"/>
-            <property name="password"/>
-            <property name="url"/>
+            <property value="${ch.password}" name="password"/>
+            <property value="${ch.env}" name="url"/>
             <property value="5" name="auxiliary;index"/>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="generate-fact" entity-id="ca4ac271-e1bf-4971-986a-ccc549a391a2">
+    <flow SubFlow="false" name="generate-fact" entity-id="d4198f3c-6712-460e-91f2-ac17988345a0">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -125,13 +125,13 @@
                 <properties>
                     <property name=""/>
                     <property name="proxyUsername"/>
-                    <property value="${salesforce.securityToken}" name="securityToken"/>
+                    <property value="${salesforce_securityToken}" name="securityToken"/>
                     <property name="proxyHost"/>
                     <property value="http://www.mulesoft.org/schema/mule/sfdc/get-user-info" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property name="proxyPort"/>
-                    <property value="${salesforce.password}" name="password"/>
+                    <property value="${salesforce_password}" name="password"/>
                     <property name="url"/>
-                    <property value="${salesforce.username}" name="username"/>
+                    <property value="${salesforce_username}" name="username"/>
                     <property name="accessTokenId"/>
                     <property value="Salesforce" name="config-ref"/>
                     <property value="12" name="auxiliary;index"/>
@@ -165,14 +165,14 @@
                 <properties>
                     <property name=""/>
                     <property name="proxyUsername"/>
-                    <property name="securityToken"/>
+                    <property value="${salesforce_securityToken}" name="securityToken"/>
                     <property name="proxyHost"/>
                     <property value="http://www.mulesoft.org/schema/mule/sfdc/create-single" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property name="proxyPort"/>
                     <property value="FeedItem" name="type"/>
-                    <property name="password"/>
+                    <property value="${salesforce_password}" name="password"/>
                     <property name="url"/>
-                    <property name="username"/>
+                    <property value="${salesforce_username}" name="username"/>
                     <property name="accessTokenId"/>
                     <property value="Salesforce" name="config-ref"/>
                     <property value="16" name="auxiliary;index"/>
@@ -205,7 +205,7 @@
                         <pattern type="http://www.mulesoft.org/schema/mule/cloudhub/cloudhub-connector" name="Cloudhub" entity-id="Cloudhub#2">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
-<property value="Could not generate fact." name="message"/>
+<property value="${tenantId} - Could not generate fact." name="message"/>
 <property value="ERROR" name="priority"/>
 <property value="http://www.mulesoft.org/schema/mule/cloudhub/create-notification" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
 <property value="Cloudhub" name="config-ref"/>

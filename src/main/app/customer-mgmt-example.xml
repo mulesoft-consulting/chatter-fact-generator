@@ -7,13 +7,13 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/cloudhub http://www.mulesoft.org/schema/mule/cloudhub/1.0/mule-cloudhub.xsd">
 
-    <sfdc:config name="Salesforce" doc:name="Salesforce" username="${salesforce_username}" password="${salesforce_password}" securityToken="${salesforce_securityToken}">
+    <sfdc:config name="Salesforce" doc:name="Salesforce">
         <sfdc:connection-pooling-profile initialisationPolicy="INITIALISE_ONE" exhaustedAction="WHEN_EXHAUSTED_GROW"/>
     </sfdc:config>
     <data-mapper:config name="tochatter_grf" transformationGraphPath="tochatter.grf" doc:name="DataMapper"/>
     
     <context:property-placeholder location="tenant.properties,mule.properties"/>
-    <cloudhub:config name="Cloudhub" doc:name="Cloudhub"/>
+    <cloudhub:config name="Cloudhub" doc:name="Cloudhub" password="${ch.password}" url="${ch.env}" username="${ch.username}"/>
 
     <flow name="generate-fact" doc:name="generate-fact">
         <poll frequency="600000" doc:name="Poll">
@@ -35,18 +35,18 @@ http://www.mulesoft.org/schema/mule/cloudhub http://www.mulesoft.org/schema/mule
 return "Did you know that " + facts[new Random().nextInt(facts.size())]]]></scripting:script>
             </scripting:transformer>
         </enricher>
-        <sfdc:get-user-info config-ref="Salesforce" doc:name="Get User Profile" username="${salesforce.username}" password="${salesforce.password}" securityToken="${salesforce.securityToken}"/>
+        <sfdc:get-user-info config-ref="Salesforce" doc:name="Get User Profile" username="${salesforce_username}" password="${salesforce_password}" securityToken="${salesforce_securityToken}"/>
         <data-mapper:transform config-ref="tochatter_grf" doc:name="DataMapper">
             <data-mapper:input-arguments>
                 <data-mapper:input-argument key="fact">#[flowVars['fact']]</data-mapper:input-argument>
             </data-mapper:input-arguments>
         </data-mapper:transform>
-        <sfdc:create-single config-ref="Salesforce" type="FeedItem" doc:name="Post to Chatter" >
+        <sfdc:create-single config-ref="Salesforce" type="FeedItem" doc:name="Post to Chatter" password="${salesforce_password}" securityToken="${salesforce_securityToken}" username="${salesforce_username}">
             <sfdc:object ref="#[payload]"/>
         </sfdc:create-single>
         <logger message="Generated fact chatter #[payload]" level="INFO" doc:name="Log Result"/>
         <catch-exception-strategy doc:name="Catch Exception Strategy">
-            <cloudhub:create-notification config-ref="Cloudhub" message="Could not generate fact." priority="ERROR" doc:name="Cloudhub"/>
+            <cloudhub:create-notification config-ref="Cloudhub" message="${tenantId} - Could not generate fact." priority="ERROR" doc:name="Cloudhub"/>
         </catch-exception-strategy>
     </flow>
     
