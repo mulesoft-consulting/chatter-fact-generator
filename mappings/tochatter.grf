@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="Dan" created="Mon Mar 25 15:46:23 PDT 2013" guiVersion="3.3.2" id="1364255548603" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Mon Mar 25 15:46:23 PDT 2013" modifiedBy="Dan" name="tochatter_grf" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __sourcePath="{}/FeedItem" _dataStructure="OBJECT" _id="__id" _type="Output" id="19306f72-c10c-492a-bcc0-bcebac662b7f">
+<Record fieldDelimiter="|" name="FeedItem" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/FeedItem/Body" containerType="SINGLE" label="Body" name="Body" type="string"/>
+<Field __sourcePath="{}/FeedItem/LikeCount" containerType="SINGLE" label="LikeCount" name="LikeCount" type="number"/>
+<Field __sourcePath="{}/FeedItem/ParentId" containerType="SINGLE" label="ParentId" name="ParentId" type="string"/>
+<Field __sourcePath="{}/FeedItem/Type" containerType="SINGLE" label="Type" name="Type" type="string"/>
+<Field __sourcePath="{}/FeedItem/LastModifiedDate" containerType="SINGLE" label="LastModifiedDate" name="LastModifiedDate" type="date"/>
+<Field __sourcePath="{}/FeedItem/LinkUrl" containerType="SINGLE" label="LinkUrl" name="LinkUrl" type="string"/>
+<Field __sourcePath="{}/FeedItem/Title" containerType="SINGLE" label="Title" name="Title" type="string"/>
+<Field __sourcePath="{}/FeedItem/ContentSize" containerType="SINGLE" label="ContentSize" name="ContentSize" type="number"/>
+<Field __sourcePath="{}/FeedItem/InsertedById" containerType="SINGLE" label="InsertedById" name="InsertedById" type="string"/>
+<Field __sourcePath="{}/FeedItem/SystemModstamp" containerType="SINGLE" label="SystemModstamp" name="SystemModstamp" type="date"/>
+<Field __sourcePath="{}/FeedItem/CreatedById" containerType="SINGLE" label="CreatedById" name="CreatedById" type="string"/>
+<Field __sourcePath="{}/FeedItem/CreatedDate" containerType="SINGLE" label="CreatedDate" name="CreatedDate" type="date"/>
+<Field __sourcePath="{}/FeedItem/IsDeleted" containerType="SINGLE" label="IsDeleted" name="IsDeleted" type="boolean"/>
+<Field __sourcePath="{}/FeedItem/ContentDescription" containerType="SINGLE" label="ContentDescription" name="ContentDescription" type="string"/>
+<Field __sourcePath="{}/FeedItem/Id" containerType="SINGLE" label="Id" name="Id" type="string"/>
+<Field __sourcePath="{}/FeedItem/ContentData" containerType="SINGLE" label="ContentData" name="ContentData" type="string"/>
+<Field __sourcePath="{}/FeedItem/ContentFileName" containerType="SINGLE" label="ContentFileName" name="ContentFileName" type="string"/>
+<Field __sourcePath="{}/FeedItem/ContentType" containerType="SINGLE" label="ContentType" name="ContentType" type="string"/>
+<Field __sourcePath="{}/FeedItem/RelatedRecordId" containerType="SINGLE" label="RelatedRecordId" name="RelatedRecordId" type="string"/>
+<Field __sourcePath="{}/FeedItem/CommentCount" containerType="SINGLE" label="CommentCount" name="CommentCount" type="number"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Input" id="ccca256c-768a-4089-a290-94bd93b43354">
+<Record fieldDelimiter="|" name="GetUserInfoResult" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/object/accessibilityMode" containerType="SINGLE" label="accessibilityMode" name="accessibilityMode" type="boolean"/>
+<Field __sourcePath="{}/object/currencySymbol" containerType="SINGLE" label="currencySymbol" name="currencySymbol" type="string"/>
+<Field __sourcePath="{}/object/orgAttachmentFileSizeLimit" containerType="SINGLE" label="orgAttachmentFileSizeLimit" name="orgAttachmentFileSizeLimit" type="integer"/>
+<Field __sourcePath="{}/object/orgDefaultCurrencyIsoCode" containerType="SINGLE" label="orgDefaultCurrencyIsoCode" name="orgDefaultCurrencyIsoCode" type="string"/>
+<Field __sourcePath="{}/object/orgDisallowHtmlAttachments" containerType="SINGLE" label="orgDisallowHtmlAttachments" name="orgDisallowHtmlAttachments" type="boolean"/>
+<Field __sourcePath="{}/object/orgHasPersonAccounts" containerType="SINGLE" label="orgHasPersonAccounts" name="orgHasPersonAccounts" type="boolean"/>
+<Field __sourcePath="{}/object/organizationId" containerType="SINGLE" label="organizationId" name="organizationId" type="string"/>
+<Field __sourcePath="{}/object/organizationMultiCurrency" containerType="SINGLE" label="organizationMultiCurrency" name="organizationMultiCurrency" type="boolean"/>
+<Field __sourcePath="{}/object/organizationName" containerType="SINGLE" label="organizationName" name="organizationName" type="string"/>
+<Field __sourcePath="{}/object/profileId" containerType="SINGLE" label="profileId" name="profileId" type="string"/>
+<Field __sourcePath="{}/object/roleId" containerType="SINGLE" label="roleId" name="roleId" type="string"/>
+<Field __sourcePath="{}/object/sessionSecondsValid" containerType="SINGLE" label="sessionSecondsValid" name="sessionSecondsValid" type="integer"/>
+<Field __sourcePath="{}/object/userDefaultCurrencyIsoCode" containerType="SINGLE" label="userDefaultCurrencyIsoCode" name="userDefaultCurrencyIsoCode" type="string"/>
+<Field __sourcePath="{}/object/userEmail" containerType="SINGLE" label="userEmail" name="userEmail" type="string"/>
+<Field __sourcePath="{}/object/userFullName" containerType="SINGLE" label="userFullName" name="userFullName" type="string"/>
+<Field __sourcePath="{}/object/userId" containerType="SINGLE" label="userId" name="userId" type="string"/>
+<Field __sourcePath="{}/object/userLanguage" containerType="SINGLE" label="userLanguage" name="userLanguage" type="string"/>
+<Field __sourcePath="{}/object/userLocale" containerType="SINGLE" label="userLocale" name="userLocale" type="string"/>
+<Field __sourcePath="{}/object/userName" containerType="SINGLE" label="userName" name="userName" type="string"/>
+<Field __sourcePath="{}/object/userTimeZone" containerType="SINGLE" label="userTimeZone" name="userTimeZone" type="string"/>
+<Field __sourcePath="{}/object/userType" containerType="SINGLE" label="userType" name="userType" type="string"/>
+<Field __sourcePath="{}/object/userUiSkin" containerType="SINGLE" label="userUiSkin" name="userUiSkin" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+<Entry dictval.__javaType="java.lang.String" id="DictionaryEntry2" input="true" name="fact" output="true" type="string"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="Pojo READER" guiWidth="0" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context outPort="0" sequenceField="__id" xpath=".">
+  <Mapping cloverField="accessibilityMode" trim="true" xpath="accessibilityMode"/>
+  <Mapping cloverField="currencySymbol" trim="true" xpath="currencySymbol"/>
+  <Mapping cloverField="orgAttachmentFileSizeLimit" trim="true" xpath="orgAttachmentFileSizeLimit"/>
+  <Mapping cloverField="orgDefaultCurrencyIsoCode" trim="true" xpath="orgDefaultCurrencyIsoCode"/>
+  <Mapping cloverField="orgDisallowHtmlAttachments" trim="true" xpath="orgDisallowHtmlAttachments"/>
+  <Mapping cloverField="orgHasPersonAccounts" trim="true" xpath="orgHasPersonAccounts"/>
+  <Mapping cloverField="organizationId" trim="true" xpath="organizationId"/>
+  <Mapping cloverField="organizationMultiCurrency" trim="true" xpath="organizationMultiCurrency"/>
+  <Mapping cloverField="organizationName" trim="true" xpath="organizationName"/>
+  <Mapping cloverField="profileId" trim="true" xpath="profileId"/>
+  <Mapping cloverField="roleId" trim="true" xpath="roleId"/>
+  <Mapping cloverField="sessionSecondsValid" trim="true" xpath="sessionSecondsValid"/>
+  <Mapping cloverField="userDefaultCurrencyIsoCode" trim="true" xpath="userDefaultCurrencyIsoCode"/>
+  <Mapping cloverField="userEmail" trim="true" xpath="userEmail"/>
+  <Mapping cloverField="userFullName" trim="true" xpath="userFullName"/>
+  <Mapping cloverField="userId" trim="true" xpath="userId"/>
+  <Mapping cloverField="userLanguage" trim="true" xpath="userLanguage"/>
+  <Mapping cloverField="userLocale" trim="true" xpath="userLocale"/>
+  <Mapping cloverField="userName" trim="true" xpath="userName"/>
+  <Mapping cloverField="userTimeZone" trim="true" xpath="userTimeZone"/>
+  <Mapping cloverField="userType" trim="true" xpath="userType"/>
+  <Mapping cloverField="userUiSkin" trim="true" xpath="userUiSkin"/>
+</Context>
+]]></attr>
+<attr name="__typeName"><![CDATA[__default__]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/sfdc/get-user-info]]></attr>
+<attr name="__connectorName"><![CDATA[Salesforce]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="Map&lt;k,v&gt; WRITER" guiWidth="0" guiX="900" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<FeedItem xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <Body>$0.Body</Body>
+  <LikeCount>$0.LikeCount</LikeCount>
+  <ParentId>$0.ParentId</ParentId>
+  <Type>$0.Type</Type>
+  <LastModifiedDate>$0.LastModifiedDate</LastModifiedDate>
+  <LinkUrl>$0.LinkUrl</LinkUrl>
+  <Title>$0.Title</Title>
+  <ContentSize>$0.ContentSize</ContentSize>
+  <InsertedById>$0.InsertedById</InsertedById>
+  <SystemModstamp>$0.SystemModstamp</SystemModstamp>
+  <CreatedById>$0.CreatedById</CreatedById>
+  <CreatedDate>$0.CreatedDate</CreatedDate>
+  <IsDeleted>$0.IsDeleted</IsDeleted>
+  <ContentDescription>$0.ContentDescription</ContentDescription>
+  <Id>$0.Id</Id>
+  <ContentData>$0.ContentData</ContentData>
+  <ContentFileName>$0.ContentFileName</ContentFileName>
+  <ContentType>$0.ContentType</ContentType>
+  <RelatedRecordId>$0.RelatedRecordId</RelatedRecordId>
+  <CommentCount>$0.CommentCount</CommentCount>
+</FeedItem>]]></attr>
+<attr name="__typeName"><![CDATA[FeedItem]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+<attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/sfdc/update-single]]></attr>
+<attr name="__connectorName"><![CDATA[Salesforce]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="Foreach 'object' -&gt; 'FeedItem'" guiWidth="0" guiX="460" guiY="20" id="REFORMAT0" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.ParentId = input.userId;
+output.Body = inputArguments.fact;]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="ccca256c-768a-4089-a290-94bd93b43354" outPort="Port 0 (out)" toNode="REFORMAT0:0"/>
+<Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="19306f72-c10c-492a-bcc0-bcebac662b7f" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>
+</Phase>
+</Graph>

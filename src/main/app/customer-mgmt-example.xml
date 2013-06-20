@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:cloudhub="http://www.mulesoft.org/schema/mule/cloudhub" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:context="http://www.springframework.org/schema/context" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/5.0/mule-sfdc.xsd
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/cloudhub http://www.mulesoft.org/schema/mule/cloudhub/1.0/mule-cloudhub.xsd">
+
+    <sfdc:config name="Salesforce" doc:name="Salesforce" username="${salesforce_username}" password="${salesforce_password}" securityToken="${salesforce_securityToken}">
+        <sfdc:connection-pooling-profile initialisationPolicy="INITIALISE_ONE" exhaustedAction="WHEN_EXHAUSTED_GROW"/>
+    </sfdc:config>
+    <data-mapper:config name="tochatter_grf" transformationGraphPath="tochatter.grf" doc:name="DataMapper"/>
+    
+    <context:property-placeholder location="tenant.properties,mule.properties"/>
+    <cloudhub:config name="Cloudhub" doc:name="Cloudhub"/>
+
+    <flow name="generate-fact" doc:name="generate-fact">
+        <poll frequency="600000" doc:name="Poll">
+            <logger message="Generating Random Fact for ${tenantId}" level="INFO" doc:name="Log Start"/>
+        </poll>
+        <enricher target="#[flowVars['fact']]" doc:name="Message Enricher">
+            <scripting:transformer doc:name="Generate Random Fact">
+                <scripting:script engine="Groovy"><![CDATA[def facts = [
+ "cats sleep 16 to 18 hours per day?",
+ "there are 10 human body parts that are only 3 letters long (eye hip arm leg ear toe jaw rib lip gum)?",
+ "elephants are the only mammals that can't jump?",
+ "you burn more calories sleeping than you do watching TV?",
+ "Minnesota has 99 lakes named mud lake?",
+ "the first product to have a bar code was Wrigleys gum?",
+ "The word 'nerd' was first coined by Dr. Seuss in 'If I Ran the Zoo?'"
+]
+
+// return a random fact
+return "Did you know that " + facts[new Random().nextInt(facts.size())]]]></scripting:script>
+            </scripting:transformer>
+        </enricher>
+        <sfdc:get-user-info config-ref="Salesforce" doc:name="Get User Profile" username="${salesforce.username}" password="${salesforce.password}" securityToken="${salesforce.securityToken}"/>
+        <data-mapper:transform config-ref="tochatter_grf" doc:name="DataMapper">
+            <data-mapper:input-arguments>
+                <data-mapper:input-argument key="fact">#[flowVars['fact']]</data-mapper:input-argument>
+            </data-mapper:input-arguments>
+        </data-mapper:transform>
+        <sfdc:create-single config-ref="Salesforce" type="FeedItem" doc:name="Post to Chatter" >
+            <sfdc:object ref="#[payload]"/>
+        </sfdc:create-single>
+        <logger message="Generated fact chatter #[payload]" level="INFO" doc:name="Log Result"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <cloudhub:create-notification config-ref="Cloudhub" message="Could not generate fact." priority="ERROR" doc:name="Cloudhub"/>
+        </catch-exception-strategy>
+    </flow>
+    
+</mule>
